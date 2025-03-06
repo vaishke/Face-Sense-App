@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera - FaceSense</title>
+    <link rel="stylesheet" href="face.css">
+
+    <style>
+        .vid {
+            margin-top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            /* Space between video and button */
+        }
+        
+        video,
+        canvas {
+            border-radius: 1rem;
+            width: 45%;
+            margin: 2%;
+            border: 5px solid black;
+        }
+        
+        #captureBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 24rem;
+            height: 50px;
+        }
+        
+        #captureBtn:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+            border-radius: 10px;
+        }
+        
+        canvas {
+            display: none;
+            margin-left: 22%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heading">
+        <img src="logo.jpg" alt="Logo" id="logo">
+        <div id="title">FaceSense</div>
+        <div id="btns">
+            <button id="homeBtn">Home</button>
+            <button id="cameraBtn">Camera</button>
+            <button id="aboutBtn">About</button>
+        </div>
+    </div>
+
+    <div id="camera-container" class="vid">
+        <video id="webcam" autoplay playsinline></video>
+        <button id="captureBtn">Capture</button>
+    </div>
+    <br>
+    <div style="text-align: center;">
+        <canvas id="capturedImage"></canvas>
+    </div>
+
+    <script>
+        document.getElementById("homeBtn").addEventListener("click", function() {
+            window.location.href = "face.html";
+        });
+
+        document.getElementById("aboutBtn").addEventListener("click", function() {
+            window.location.href = "face.html?section=about";
+        });
+
+        function startWebcam() {
+            const videoElement = document.getElementById("webcam");
+            if (navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({
+                        video: true
+                    })
+                    .then(function(stream) {
+                        videoElement.srcObject = stream;
+                    })
+                    .catch(function(error) {
+                        console.error("Error accessing webcam: ", error);
+                        alert("Could not access webcam. Please allow camera permissions.");
+                    });
+            } else {
+                alert("Your browser does not support webcam access.");
+            }
+        }
+
+        function captureImage() {
+            const video = document.getElementById("webcam");
+            const canvas = document.getElementById("capturedImage");
+            const context = canvas.getContext("2d");
+
+            if (!video.srcObject) {
+                alert("Camera is not active. Please allow access and try again.");
+                return;
+            }
+
+            // Ensure video has dimensions before capturing
+            if (video.videoWidth === 0 || video.videoHeight === 0) {
+                alert("Camera is not fully loaded yet. Please wait and try again.");
+                return;
+            }
+
+            // Set canvas size to match video
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+
+            // Draw the video frame onto the canvas
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Show the captured image
+            canvas.style.display = "block";
+        }
+
+        document.getElementById("captureBtn").addEventListener("click", captureImage);
+
+        window.onload = startWebcam;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,271 @@
+/* General Body Styling */
+
+body {
+    background-color: rgb(203, 157, 244);
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 90px;
+    /* Prevents content from overlapping with the header */
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    background-color: #007BFF;
+    border-radius: 5px;
+}
+
+
+/* Header Styling */
+
+.heading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(73, 4, 116);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 1000;
+}
+
+
+/* Logo Styling */
+
+#logo {
+    height: 80px;
+    margin-right: 1rem;
+    width: auto;
+    border-radius: 10px;
+}
+
+
+/* Title Styling */
+
+#title {
+    font-size: 2.5rem;
+    font-family: "Courier New", Courier, monospace;
+}
+
+
+/* Button Container */
+
+#btns {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: 45%;
+}
+
+
+/* Buttons Styling */
+
+#btns button {
+    padding: 12px 20px;
+    border: none;
+    background-color: #4CAF50;
+    /* Green */
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+
+/* Hover Effect */
+
+#btns button:hover {
+    background-color: #0056b3;
+    /* Darker Green */
+    transform: scale(1.1);
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Active (Click) Effect */
+
+#btns button:active {
+    background-color: #3e8e41;
+    transform: scale(1.05);
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Slider Container */
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 370px;
+    overflow: hidden;
+    margin-top: 5rem;
+}
+
+
+/* Slide Item Styling */
+
+.item {
+    position: absolute;
+    width: 270px;
+    height: 340px;
+    background-color: #f0c2c2;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.5s;
+    left: calc(50% - 140px);
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+/* Image inside Slide Box */
+
+.moving-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+/* About Us Section */
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    /* Space between text and image */
+    padding: 40px;
+    max-width: 73rem;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.2);
+    /* Semi-transparent white background */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+    /* Soft shadow effect */
+    padding: 30px;
+}
+
+
+/* About Us Image */
+
+.aboutimage {
+    width: 350px;
+    /* Adjust image size */
+    height: auto;
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* About Us Text Box */
+
+.about-text {
+    background: rgba(255, 255, 255, 0.3);
+    /* Semi-transparent white background */
+    padding: 10px;
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    /* Soft shadow effect */
+    max-width: 600px;
+    /* Adjust width as needed */
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+}
+
+
+/* Footer Styling */
+
+.foot {
+    background-color: rgb(73, 4, 116);
+    color: white;
+    padding: 20px 0;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.foot h3 {
+    margin: 10px 0;
+}
+
+#follow {
+    margin-left: auto;
+    font-weight: bold;
+}
+
+
+/* Footer Links */
+
+.foot a {
+    color: #8db5df;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.foot a:hover {
+    text-decoration: underline;
+}
+
+
+/* Social Media Icons */
+
+.social-icons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-icons img {
+    width: 32px;
+    /* Adjust icon size */
+    height: 32px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+}
