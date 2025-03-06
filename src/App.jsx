@@ -1,27 +1,23 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Detect from './pages/Detect.jsx';
-import About from './pages/About.jsx';
-import Home from './pages/Home.jsx';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Header from "./pages/Header";
+import Slider from "./pages/Slider";  // ✅ Ensure correct relative import
+import About from "./pages/About";
+import Camera from "./pages/Camera";
+import Footer from "./pages/Footer";
 
 function App() {
   return (
-    <>
-      <div className="Header">
-        <h1 className="logo">FaceSense</h1>
-        <nav className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/detect">Detect</Link>
-        </nav>
-      </div>
-
+    <Router>
+      <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/detect" element={<Detect />} />
+        <Route path="/" element={<Slider />} />
+        <Route path="/Header" element={<Header />} />  
+        <Route path="/About" element={<About />} />   
+        <Route path="/Camera" element={<Camera />} />
       </Routes>
-    </>
+      <Footer />
+    </Router>
   );
 }
 
