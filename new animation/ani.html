@@ -80,8 +80,8 @@
             width: 40%;
             height: 65%;
             object-fit: contain;
-            z-index: -1;
-            opacity: 0.7;
+            opacity: 0.98;
+            border: none;
         }
         
         .banner {
@@ -105,17 +105,17 @@
         
         @keyframes autoRun {
             from {
-                transform: perspective(100rem) rotateX(-11deg) rotateY(0deg);
+                transform: perspective(100rem) rotateX(-13deg) rotateY(0deg);
             }
             to {
-                transform: perspective(100rem) rotateX(-12deg) rotateY(360deg);
+                transform: perspective(100rem) rotateX(-17deg) rotateY(360deg);
             }
         }
         
         .banner .slider .item {
             position: absolute;
             inset: 0 0 0 0;
-            transform: rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px);
+            transform: rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(470px);
         }
         
         .banner .content .model {
@@ -125,7 +125,6 @@
             position: absolute;
             background-repeat: no-repeat;
             background-position: top center;
-            z-index: 1;
         }
         
         .banner .slider .item img {
@@ -195,7 +194,6 @@
             border-radius: 8px;
             transition: all 0.3s ease;
             font-weight: bold;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
             outline: none;
         }
         
@@ -264,7 +262,7 @@
     </video>
     <!-- Animated Banner Section -->
     <div class="banner">
-        <div class="slider" style="--quantity: 11">
+        <div class="slider" style="--quantity: 8">
             <div class="item" style="--position: 1"><img src="image1.png" alt=""></div>
             <div class="item" style="--position: 2"><img src="image2.webp" alt=""></div>
             <div class="item" style="--position: 3"><img src="image3.avif" alt=""></div>
@@ -303,9 +301,9 @@
     <!-- Footer Section (Moved Outside Banner) -->
     <footer class="foot">
         <div id="btns-foot">
-            <button id="homeBtn">Home</button>
-            <button id="cameraBtn">Camera</button>
-            <button id="aboutBtn">About</button>
+            <button id="homeBtn-foot">Home</button>
+            <button id="cameraBtn-foot">Camera</button>
+            <button id="aboutBtn-foot">About</button>
         </div>
 
         <h4>Copyright &copy; 2025 FaceSense. All rights reserved</h4>
@@ -315,22 +313,34 @@
     document.getElementById("cameraBtn").addEventListener("click", function() {
         window.location.href = "camera.html"; // Navigate to camera page
     });
-    document.addEventListener("DOMContentLoaded", function() {
-        // Smooth Scroll for About button
-        document.getElementById("aboutBtn").addEventListener("click", function() {
-            document.getElementById("about-container").scrollIntoView({
-                behavior: "smooth"
-            });
+    document.getElementById("aboutBtn").addEventListener("click", function() {
+        document.getElementById("about-container").scrollIntoView({
+            behavior: "smooth"
         });
+    });
 
-        // Smooth Scroll for Home button
-        document.getElementById("homeBtn").addEventListener("click", function() {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+    // Smooth Scroll for Home button
+    document.getElementById("homeBtn").addEventListener("click", function() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
         });
+    });
+    document.getElementById("cameraBtn-foot").addEventListener("click", function() {
+        window.location.href = "camera.html"; // Navigate to camera page
+    });
+    document.getElementById("aboutBtn-foot").addEventListener("click", function() {
+        document.getElementById("about-container").scrollIntoView({
+            behavior: "smooth"
+        });
+    });
 
+    // Smooth Scroll for Home button
+    document.getElementById("homeBtn-foot").addEventListener("click", function() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     });
 </script>
 

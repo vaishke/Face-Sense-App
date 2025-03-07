@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Camera - FaceSense</title>
-    <link rel="stylesheet" href="face.css">
 
     <style>
         body {
@@ -181,9 +180,9 @@
     </div>
     <footer class="foot">
         <div id="btns-foot">
-            <button id="homeBtn">Home</button>
-            <button id="cameraBtn">Camera</button>
-            <button id="aboutBtn">About</button>
+            <button id="homeBtn-foot">Home</button>
+            <button id="cameraBtn-foot">Camera</button>
+            <button id="aboutBtn-foot">About</button>
         </div>
         <h4>Copyright &copy; 2025 FaceSense. All rights reserved</h4>
     </footer>
@@ -194,6 +193,20 @@
 
         document.getElementById("aboutBtn").addEventListener("click", function() {
             window.location.href = "ani.html?#about-image";
+        });
+        document.getElementById("cameraBtn-foot").addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            }); // Navigate to camera page
+        });
+        document.getElementById("aboutBtn-foot").addEventListener("click", function() {
+            window.location.href = "ani.html?#about-image";
+        });
+
+        // Smooth Scroll for Home button
+        document.getElementById("homeBtn-foot").addEventListener("click", function() {
+            window.location.href = "ani.html";
         });
 
         function startWebcam() {

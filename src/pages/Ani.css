@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #cb9df4;
+}
+
+.heading {
+    position: fixed;
+    width: 100%;
+    background-color: rgb(73, 4, 116);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+#logo {
+    height: 80px;
+    margin-right: 1rem;
+    width: auto;
+    border-radius: 10px;
+}
+
+#title {
+    font-size: 2.5rem;
+    font-family: "Courier New", Courier, monospace;
+}
+
+#btns {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: 45%;
+}
+
+#btns button {
+    padding: 12px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+#btns button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+#btns button:active {
+    background-color: #3e8e41;
+    transform: scale(1.05);
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+#bg-video {
+    position: absolute;
+    margin-top: 15%;
+    margin-left: 30%;
+    width: 40%;
+    height: 65%;
+    object-fit: contain;
+    opacity: 0.98;
+    border: none;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner .slider {
+    position: absolute;
+    width: 200px;
+    height: 30%;
+    top: 31%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 10s linear infinite;
+    z-index: 2;
+}
+
+@keyframes autoRun {
+    from {
+        transform: perspective(100rem) rotateX(-13deg) rotateY(0deg);
+    }
+    to {
+        transform: perspective(100rem) rotateX(-17deg) rotateY(360deg);
+    }
+}
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(470px);
+}
+
+.banner .content .model {
+    background-clip: url(bgvideo.mp4);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+.banner .slider .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 5px solid white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.about-container {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    max-width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 1%;
+    margin-right: 1%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2)
+}
+
+.aboutimage {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.about-text {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 60%;
+    margin-left: 3%;
+    font-size: 18px;
+    color: #333;
+}
+
+.foot {
+    background-color: rgb(73, 4, 116);
+    color: white;
+    padding: 8px 0;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#btns-foot {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: 37%;
+    margin-bottom: .1%;
+}
+
+#btns-foot button {
+    padding: 12px 20px;
+    border: none;
+    background-color: rgb(73, 4, 116);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    outline: none;
+}
+
+#btns-foot button:active {
+    background-color: #3e8e41;
+    transform: scale(1.05);
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 1023px) {
+    .banner .slider {
+        width: 160px;
+        height: 200px;
+        left: calc(50% - 80px);
+    }
+    .banner .slider .item {
+        transform: rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(300px);
+    }
+    .banner .content h1 {
+        text-align: center;
+        width: 100%;
+        text-shadow: 0 10px 20px #000;
+        font-size: 7em;
+    }
+    .banner .content .author {
+        color: #fff;
+        padding: 20px;
+        text-shadow: 0 10px 20px #000;
+        z-index: 2;
+        max-width: unset;
+        width: 100%;
+        text-align: center;
+        padding: 0 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .banner .slider {
+        width: 100px;
+        height: 150px;
+        left: calc(50% - 50px);
+    }
+    .banner .slider .item {
+        transform: rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(180px);
+    }
+    .banner .content h1 {
+        font-size: 5em;
+    }
+}

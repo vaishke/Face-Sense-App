@@ -1,22 +1,15 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./pages/Header";
-import Slider from "./pages/Slider";  // ✅ Ensure correct relative import
-import About from "./pages/About";
-import Camera from "./pages/Camera";
-import Footer from "./pages/Footer";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Ani from './pages/Ani.jsx';
+import Camera from './pages/Camera.jsx';
 
 function App() {
   return (
     <Router>
-      <Header />
       <Routes>
-        <Route path="/" element={<Slider />} />
-        <Route path="/Header" element={<Header />} />  
-        <Route path="/About" element={<About />} />   
-        <Route path="/Camera" element={<Camera />} />
+        <Route path="/Ani.jsx" element={<Ani />} />
+        <Route path="/Camera.jsx" element={<Camera />} /> {/* Corrected route */}
       </Routes>
-      <Footer />
     </Router>
   );
 }
