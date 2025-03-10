@@ -1,96 +1,62 @@
-import React, { useRef, useEffect } from 'react';
-import './Camera.css';
+import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Camera.css";
 
-function Camera() {
+const Camera = () => {
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+  const navigate = useNavigate();
+
   useEffect(() => {
-    startWebcam();
-  }, []);
+    const startWebcam = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+        }
+      } catch (error) {
+        console.error("Error accessing webcam:", error);
+        alert("Could not access webcam. Please allow camera permissions.");
+      }
+    };
 
-  const startWebcam = () => {
-    const videoElement = videoRef.current;
-    if (navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then((stream) => {
-          videoElement.srcObject = stream;
-        })
-        .catch((error) => {
-          console.error('Error accessing webcam: ', error);
-          alert('Could not access webcam. Please allow camera permissions.');
-        });
-    } else {
-      alert('Your browser does not support webcam access.');
-    }
-  };
+    startWebcam();
+
+    return () => {
+      if (videoRef.current && videoRef.current.srcObject) {
+        const tracks = videoRef.current.srcObject.getTracks();
+        tracks.forEach(track => track.stop()); // Stop each track when unmounting
+      }
+    };
+  }, []);
 
   const captureImage = () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
-    const context = canvas.getContext('2d');
-
-    if (!video.srcObject) {
-      alert('Camera is not active. Please allow access and try again.');
-      return;
+    if (video && canvas) {
+      const context = canvas.getContext("2d");
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      canvas.style.display = "block"; // Show canvas after capturing
     }
-
-    if (video.videoWidth === 0 || video.videoHeight === 0) {
-      alert('Camera is not fully loaded yet. Please wait and try again.');
-      return;
-    }
-
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-
-    context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-    canvas.style.display = 'block';
   };
-
-  const handleHomeClick = () => {
-    window.location.href = 'ani.js';
-  };
-
-  const handleAboutClick = () => {
-      window.location.href = 'ani.js#about-container';
-  };
-
-  const handleCameraClick = () => {
-      window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-      });
-  }
 
   return (
-    <>
-      <div className="heading">
-        <img src="logo.jpg" alt="Logo" id="logo" />
-        <div id="title">FaceSense</div>
-        <div id="btns">
-          <button id="homeBtn" onClick={handleHomeClick}>Home</button>
-          <button id="cameraBtn" onClick={handleCameraClick}>Camera</button>
-          <button id="aboutBtn" onClick={handleAboutClick}>About</button>
-        </div>
+    <div>
+      <header className="heading">
+        <button onClick={() => navigate(-1)}>Back</button>
+      </header>
+
+      <div className="vid">
+        <video ref={videoRef} autoPlay playsInline />
       </div>
-      <div id="camera-container" className="vid">
-        <video id="webcam" autoPlay playsInline ref={videoRef}></video>
-        <div style={{ textAlign: 'center' }}>
-          <canvas id="capturedImage" ref={canvasRef}></canvas>
-        </div>
-      </div>
-      <div>
-        <button id="captureBtn" onClick={captureImage}>Capture</button>
-      </div>
-      <footer className="foot">
-        <div id="btns-foot">
-          <button id="homeBtn-foot" onClick={handleHomeClick}>Home</button>
-          <button id="cameraBtn-foot" onClick={handleCameraClick}>Camera</button>
-          <button id="aboutBtn-foot" onClick={handleAboutClick}>About</button>
-        </div>
-        <h4>Copyright &copy; 2025 FaceSense. All rights reserved</h4>
-      </footer>
-    </>
+
+      <button id="captureBtn" onClick={captureImage}>Capture</button>
+
+      <canvas ref={canvasRef} />
+    </div>
   );
-}
+};
 
 export default Camera;
