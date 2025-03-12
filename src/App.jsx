@@ -1,16 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom"; // ❌ No BrowserRouter here
 import FaceSense from "./pages/FaceSense";
 import Camera from "./pages/Camera";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<FaceSense />} />
-        <Route path="/camera" element={<Camera />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<FaceSense />} />
+      <Route path="/camera" element={<Camera />} />
+    </Routes>
   );
 }
 

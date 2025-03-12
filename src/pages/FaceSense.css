@@ -1,3 +1,5 @@
+/* Reset and Global Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +11,7 @@ body {
 }
 
 
-/* Header */
+/* Header Section */
 
 .heading {
     position: fixed;
@@ -21,24 +23,29 @@ body {
     display: flex;
     align-items: center;
     padding: 1rem 2rem;
+    z-index: 1000;
 }
 
 #logo {
     height: 80px;
+    margin-right: 1rem;
     width: auto;
     border-radius: 10px;
-    margin-right: 1rem;
 }
 
 #title {
     font-size: 2.5rem;
     font-family: "Courier New", Courier, monospace;
+    font-weight: bolder;
 }
+
+
+/* Button Section */
 
 #btns {
     display: flex;
     gap: 1.5rem;
-    margin-left: auto;
+    margin-left: 45%;
 }
 
 #btns button,
@@ -56,8 +63,7 @@ body {
     outline: none;
 }
 
-#btns button:hover,
-#btns-foot button:hover {
+#btns button:hover {
     background-color: #0056b3;
     transform: scale(1.1);
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
@@ -75,11 +81,10 @@ body {
 
 #bg-video {
     position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 18.5%;
+    margin-left: 30%;
     width: 40%;
-    height: 65%;
+    height: 60%;
     object-fit: contain;
     opacity: 0.98;
     border: none;
@@ -99,30 +104,41 @@ body {
     position: absolute;
     width: 200px;
     height: 30%;
-    top: 31%;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 32%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
     animation: autoRun 10s linear infinite;
+    z-index: 2;
 }
 
 @keyframes autoRun {
     from {
-        transform: rotateY(0deg);
+        transform: perspective(100rem) rotateX(-13deg) rotateY(0deg);
     }
     to {
-        transform: rotateY(360deg);
+        transform: perspective(100rem) rotateX(-14deg) rotateY(360deg);
     }
 }
 
 .banner .slider .item {
     position: absolute;
-    inset: 0;
-    transform: rotateY(calc(var(--position) * (360 / var(--quantity)) * 1deg)) translateZ(470px);
+    inset: 0 0 0 0;
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(470px);
+}
+
+.banner .content .model {
+    background-clip: url(bgvideo.mp4);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: top center;
 }
 
 .banner .slider .item img {
     width: 100%;
-    height: 100%;
+    height: 90%;
     object-fit: cover;
     border: 5px solid white;
     border-radius: 10px;
@@ -137,7 +153,7 @@ body {
     gap: 30px;
     padding: 30px;
     max-width: 100%;
-    margin: 20px 1%;
+    margin: 0 1%;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
@@ -156,19 +172,19 @@ body {
     border-radius: 10px;
     font-family: 'Times New Roman', Times, serif;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 60%;
+    max-width: 68%;
     margin-left: 3%;
     font-size: 18px;
     color: #333;
 }
 
 
-/* Footer */
+/* Footer Section */
 
 .foot {
     background-color: rgb(73, 4, 116);
     color: white;
-    padding: 10px 0;
+    padding: 8px 0;
     margin-top: 20px;
     text-align: center;
 }
@@ -176,25 +192,85 @@ body {
 #btns-foot {
     display: flex;
     gap: 1.5rem;
-    justify-content: center;
-    margin-bottom: 10px;
+    margin-left: 37%;
+    margin-bottom: 0.1%;
+}
+
+#btns-foot button {
+    padding: 12px 20px;
+    border: none;
+    background-color: rgb(73, 4, 116);
+    color: white;
+    font-size: .9rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+#btns-foot button:hover {
+    background-color: #3e8e41;
+    transform: scale(1.1);
+}
+
+.item {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    perspective: 1000px;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.item:hover img {
+    transform: rotateY(180deg);
+}
+
+.item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
 }
 
 
-/* Responsive Design */
+/* Responsive Styles */
 
 @media screen and (max-width: 1023px) {
     .banner .slider {
         width: 160px;
         height: 200px;
+        left: calc(50% - 80px);
     }
     .banner .slider .item {
-        transform: rotateY(calc(var(--position) * (360 / var(--quantity)) * 1deg)) translateZ(300px);
+        transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(300px);
     }
     .banner .content h1 {
         text-align: center;
         width: 100%;
-        font-size: 3em;
+        text-shadow: 0 10px 20px #000;
+        font-size: 7em;
+    }
+    .banner .content .author {
+        color: #fff;
+        padding: 20px;
+        text-shadow: 0 10px 20px #000;
+        z-index: 2;
+        width: 100%;
+        text-align: center;
+        padding: 0 30px;
     }
 }
 
@@ -202,19 +278,12 @@ body {
     .banner .slider {
         width: 100px;
         height: 150px;
+        left: calc(50% - 50px);
     }
     .banner .slider .item {
-        transform: rotateY(calc(var(--position) * (360 / var(--quantity)) * 1deg)) translateZ(180px);
+        transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(180px);
     }
     .banner .content h1 {
-        font-size: 2.5em;
-    }
-    .about-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .about-text {
-        max-width: 90%;
+        font-size: 5em;
     }
 }

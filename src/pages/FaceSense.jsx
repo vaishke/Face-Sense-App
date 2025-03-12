@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./FaceSense.css"; // Import styles
 import logo from "../assets/logo.jpg"; // Import images properly
-import bgVideo from "../assets/bgvideo.mp4";
+import bgVideo from "../assets/bgvideo1.mp4";
 import aboutImage from "../assets/aboutimage1.jpg";
 
 // Import all images for the banner slider
@@ -22,34 +22,19 @@ const images = [image1, image2, image3, image4, image5, image6, image7, image8, 
 
 function FaceSense() {
   const navigate = useNavigate();
-  const videoRef = useRef(null);  // Ref for video background
-  const sliderRef = useRef(null); // Ref for image slider
 
-  // Effect to ensure video plays automatically
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch((err) => console.error("Video play failed:", err));
-    }
-  }, []);
+  // Fix functions
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-  // Automatic image slider animation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (sliderRef.current) {
-        sliderRef.current.scrollLeft += 300; // Move slider every 3 seconds
-        if (sliderRef.current.scrollLeft >= sliderRef.current.scrollWidth - sliderRef.current.clientWidth) {
-          sliderRef.current.scrollLeft = 0; // Reset when reaching end
-        }
-      }
-    }, 3000);
-    
-    return () => clearInterval(interval);
-  }, []);
+  const scrollToAbout = () => {
+    document.getElementById("about-container").scrollIntoView({ behavior: "smooth" });
+  };
 
-  // Scroll functions
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-  const scrollToAbout = () => document.getElementById("about-container").scrollIntoView({ behavior: "smooth" });
-  const goToCamera = () => navigate("/camera");
+  const goToCamera = () => {
+    navigate("/camera");
+  };
 
   return (
     <div>
@@ -65,31 +50,33 @@ function FaceSense() {
       </header>
 
       {/* Background Video */}
-      <video ref={videoRef} autoPlay muted loop id="bg-video">
+      <video autoPlay muted loop id="bg-video">
         <source src={bgVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
       {/* Animated Banner Section */}
       <div className="banner">
-        <div className="slider" ref={sliderRef}>
-          {images.map((img, index) => (
-            <div className="item" key={index}>
-              <img src={img} alt={`Image ${index + 1}`} />
-            </div>
-          ))}
-        </div>
-        <div className="content">
-          <div className="model">FaceSense</div>
-        </div>
+  <div className="slider" style={{ "--quantity": images.length }}>
+    {images.map((img, index) => (
+      <div key={index} className="item" style={{ "--position": index + 1 }}>
+        <img src={img} alt={`Image ${index + 1}`} />
       </div>
+    ))}
+  </div>
+</div>
+
 
       {/* About Section */}
       <div className="about-container" id="about-container">
-        <img src={aboutImage} id="about-image" className="aboutimage" alt="About FaceSense" />
+        <img src={aboutImage} id="about-image" className="aboutimage"  alt="About FaceSense" />
         <div className="about-text" id="about-text">
           <p>
-            <mark>FaceSense</mark> is an AI-powered facial recognition application that captures video footage and detects human faces in real-time...
+            <mark>FaceSense</mark> is an AI-powered facial recognition application that captures video footage and detects human faces in real time. Using advanced image processing techniques, it identifies individuals, tracks their movements, and
+                analyzes their presence within a designated area. Once a face is detected, the application highlights it with a green bounding box for clear visibility, ensuring accurate and efficient recognition. This web-based application seamlessly
+                integrates with live video streams from sources such as IP cameras and local video files. It offers key functionalities like facial recognition, object tracking, and real-time monitoring, allowing users to track entry and exit events and
+                generate reports on individual presence and duration. Designed for security monitoring and accessibility solutions, Face Sense features an intuitive user interface with real-time annotations and ensures data privacy by complying with relevant
+                regulations. Its fast and precise detection capabilities enhance security, automation, and surveillance across various environments.
           </p>
         </div>
       </div>

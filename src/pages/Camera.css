@@ -1,16 +1,20 @@
-/* General Styling */
+/* General Page Styles */
 
-body {
-    background-color: rgb(203, 157, 244);
-    font-family: Arial, sans-serif;
+body,
+html {
     margin: 0;
     padding: 0;
+    background-color: rgb(203, 157, 244);
+    /* Background color */
+    font-family: Arial, sans-serif;
+    /* overflow: hidden; */
+    /* Prevents scrolling */
 }
 
 
 /* Header */
 
-.heading {
+.heading-cam {
     position: fixed;
     top: 0;
     left: 0;
@@ -20,30 +24,31 @@ body {
     display: flex;
     align-items: center;
     padding: 1rem 2rem;
+    z-index: 1000;
 }
 
-#logo {
+#logo-cam {
     height: 60px;
     margin-right: 1rem;
     width: auto;
     border-radius: 10px;
 }
 
-#title {
+#title-cam {
     font-size: 2.5rem;
     font-family: "Courier New", Courier, monospace;
 }
 
 
-/* Navigation Buttons */
+/* Top Navigation Buttons */
 
-#btns {
+#btns-cam {
     display: flex;
     gap: 1.5rem;
     margin-left: auto;
 }
 
-#btns button {
+#btns-cam button {
     padding: 12px 20px;
     border: none;
     background-color: #4CAF50;
@@ -57,45 +62,97 @@ body {
     outline: none;
 }
 
-#btns button:hover {
+#btns-cam button:hover {
     background-color: #0056b3;
     transform: scale(1.1);
-}
-
-#btns button:active {
-    background-color: #3e8e41;
-    transform: scale(1.05);
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
 }
 
 
-/* Video Container */
+/* Camera Section */
 
-.vid {
+#video-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 120px;
-    /* Adjusted to avoid header overlap */
+    flex-direction: row;
+    gap: 10rem;
 }
 
-video {
-    border-radius: 1rem;
-    width: 50%;
-    border: 5px solid black;
-    max-width: 700px;
+
+/* Video Feed */
+
+.video-feed {
+    margin-left: 8rem;
+    width: 424.5px;
+    height: 320px;
+    border-radius: 10px;
+    border: 3px solid black;
+    background-color: #f0f0f0;
+}
+
+
+/* Captured Image */
+
+#capturedImage {
+    width: 424.5px;
+    height: 320px;
+    border-radius: 10px;
+    border: 3px solid black;
+    display: none;
+    /* Initially hidden */
 }
 
 
 /* Capture Button */
 
-#capture-btn {
+#captureBtn {
     display: block;
-    margin: 20px auto;
-    padding: 12px 25px;
-    border: none;
-    background-color: #d9534f;
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    font-weight: bold;
     color: white;
-    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    margin-left: 36rem;
+    border-radius: 10px;
+}
+
+#captureBtn:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+
+/* Footer */
+
+.foot-cam {
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    background-color: rgb(73, 4, 116);
+    color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+
+/* Footer Buttons */
+
+#btns-foot-cam {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+#btns-foot-cam button {
+    padding: 12px 20px;
+    border: none;
+    background-color: rgb(73, 4, 116);
+    color: white;
+    font-size: .9rem;
     cursor: pointer;
     border-radius: 8px;
     transition: all 0.3s ease;
@@ -104,33 +161,7 @@ video {
     outline: none;
 }
 
-#capture-btn:hover {
-    background-color: #c9302c;
+#btns-foot-cam button:hover {
+    background-color: #3e8e41;
     transform: scale(1.1);
-}
-
-#capture-btn:active {
-    background-color: #a52722;
-    transform: scale(1.05);
-}
-
-
-/* Responsive Adjustments */
-
-@media screen and (max-width: 768px) {
-    video {
-        width: 80%;
-        /* Adjust for smaller screens */
-    }
-    .vid {
-        margin-top: 100px;
-    }
-    #btns {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    #capture-btn {
-        width: 80%;
-        text-align: center;
-    }
 }
