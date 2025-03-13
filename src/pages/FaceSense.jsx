@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./FaceSense.css"; // Import styles
 import logo from "../assets/logo.jpg"; // Import images properly
 import bgVideo from "../assets/bgvideo1.mp4";
+import Captureani from "../assets/Captureani1.gif";
 import aboutImage from "../assets/aboutimage1.jpg";
 
 // Import all images for the banner slider
@@ -65,8 +66,17 @@ function FaceSense() {
     ))}
   </div>
 </div>
+      <div className="CaptureHome">
+      <div className="CaptureHomeImg">
+      <div className="CaptureHomeImg">
+  <img  className="CaptureHomeGif"src={Captureani} alt="Capture Animation" />
+</div>
 
-
+      </div>
+      <div>
+        <button className="CaptureHomeButton" onClick={goToCamera}>Capture</button>
+      </div>
+      </div>
       {/* About Section */}
       <div className="about-container" id="about-container">
         <img src={aboutImage} id="about-image" className="aboutimage"  alt="About FaceSense" />
