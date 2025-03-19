@@ -27,7 +27,7 @@ body {
 }
 
 #logo {
-    height: 80px;
+    height: 60px;
     margin-right: 1rem;
     width: auto;
     border-radius: 10px;
@@ -36,9 +36,6 @@ body {
 #title {
     font-size: 2.5rem;
     font-family: "Courier New", Courier, monospace;
-    font-weight: bolder;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px rgb(219, 119, 236), 0 0 20px rgb(185, 102, 241);
 }
 
 
@@ -47,7 +44,7 @@ body {
 #btns {
     display: flex;
     gap: 1.5rem;
-    margin-left: 45%;
+    margin-left: auto;
 }
 
 #btns button,
@@ -290,27 +287,23 @@ body {
     }
 }
 
-
-
-.CaptureHome{
+.CaptureHome {
     justify-content: center;
     text-align: center;
     display: flex;
     /* background: rgba(255, 255, 255, 0.2); */
-    margin: 3rem;
-    height: 30%;
-    width: 30%;
-    margin-left: 30rem;
     border-radius: 3rem;
 }
-.CaptureHomeButton{
+
+.CaptureHomeButton {
     background-color: #3e8e41;
     margin: 3rem;
 }
-.CaptureHomeGif{
+
+.CaptureHomeGif {
     justify-content: center;
     border-radius: 2rem;
-    width: 40rem;
+    width: 25rem;
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
 }
