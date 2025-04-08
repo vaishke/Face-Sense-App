@@ -83,14 +83,15 @@ const Camera = () => {
     <div className="body">
       <Header />
   
-      <div>
-        <button id="captureBtn" onClick={captureImage}>Capture</button>
-      </div>
-  
       <div id="video-container">
         <video ref={videoRef} autoPlay playsInline className="video-feed"></video>
         <canvas ref={canvasRef} id="capturedImage"></canvas>
       </div>
+      
+      <div>
+        <button id="captureBtn" onClick={captureImage}>Capture</button>
+      </div>
+  
   
       <Footer />
     </div>

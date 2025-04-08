@@ -24,7 +24,7 @@ import { faHourglassStart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRocket, faVideo, faCameraRetro, faBrain, faSyncAlt, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 
-const images = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11];
+const images = [image1, image2, image3, image4, image5, image7, image8, image9, image10, image11];
 
 function FaceSense() {
   const navigate = useNavigate();
@@ -50,11 +50,11 @@ function FaceSense() {
     <div>
       {/* Header Section */}
       <Header
-  scrollToTop={scrollToTop}
-  scrollToCamera={scrollToCamera}
-  scrollToAbout={scrollToAbout}
-  scrollToInstruct={scrollToInstruct}
-/>
+        scrollToTop={scrollToTop}
+        scrollToCamera={scrollToCamera}
+        scrollToAbout={scrollToAbout}
+        scrollToInstruct={scrollToInstruct}
+      />
 
       {/* Background Video */}
       <video autoPlay muted loop id="bg-video">
@@ -73,33 +73,33 @@ function FaceSense() {
           ))}
         </div>
       </div>
-      
+
       {/* About Section */}
       <div className="about-container" id="about-container">
         {/* <img src={aboutImage} id="about-image" className="aboutimage" alt="About FaceSense" /> */}
         <div className="about-text" id="about-text">
           <p>
-  <b>Key Functionalities of FaceSense</b><br /><br />
+            <b><u>Key Functionalities of FaceSense </u></b><br /><br />
 
-  <b>Recognizes Faces in Captured Images:</b><br />
-  FaceSense accurately detects and identifies human faces from still frames using advanced AI models.<br /><br />
+            <b>Recognizes Faces in Captured Images:</b><br />
+            FaceSense accurately detects and identifies human faces from still frames using advanced AI models.<br /><br />
 
-  <b>Displays Bounding Boxes and Names:</b><br />
-  Detected faces are highlighted with green bounding boxes, and the recognized names are displayed next to each face.<br /><br />
+            <b>Displays Bounding Boxes and Names:</b><br />
+            Detected faces are highlighted with green bounding boxes, and the recognized names are displayed next to each face.<br /><br />
 
-  <b>Powered by YOLO & FaceNet:</b><br />
-  Utilizes YOLO (You Only Look Once) for real-time face detection and FaceNet for facial recognition and embedding-based matching.
-</p>
+            <b>Powered by YOLO & FaceNet:</b><br />
+            Utilizes YOLO (You Only Look Once) for real-time face detection and FaceNet for facial recognition and embedding-based matching.
+          </p>
         </div>
         <div className="CaptureHome" id="CaptureHome">
-  <div className="CaptureHomeImg">
-    <img className="CaptureHomeGif" src={Captureani} alt="Capture Animation" />
-    <button className="CaptureHomeButton" onClick={goToCamera}>
-    Click to Capture!
-    </button>
-  </div>
-</div>
-        
+          <div className="CaptureHomeImg">
+            <img className="CaptureHomeGif" src={Captureani} alt="Capture Animation" />
+            <button className="CaptureHomeButton" onClick={goToCamera}>
+              Click to Capture!
+            </button>
+          </div>
+        </div>
+
       </div>
       {/* Instruction Section */}
       <div className="instruct-container" id="instruct-container">
@@ -109,48 +109,48 @@ function FaceSense() {
         <div className="instruct-text" id="instruct-text">
 
           <p>
-  <b>📖 How to Use FaceSense</b><br /><br />
+            <b>📖 How to Use FaceSense</b><br /><br />
 
-  Follow the steps below to make the most out of its powerful features:<br /><br />
+            Follow the steps below to make the most out of its powerful features:<br /><br />
 
-  <FontAwesomeIcon icon={faHourglassStart} style={{ marginRight: '8px', color: '#4a007e' }} /> <b>Step 1: Getting Started</b><br />
-  &#10036; Visit the Home Page of FaceSense.<br />
-  &#10036; Explore the about section to learn more about the application’s capabilities.<br /><br />
+            <FontAwesomeIcon icon={faHourglassStart} style={{ marginRight: '8px', color: '#4a007e' }} /> <b>Step 1: Getting Started</b><br />
+            &#10036; Visit the Home Page of FaceSense.<br />
+            &#10036; Explore the about section to learn more about the application’s capabilities.<br /><br />
 
-  <FontAwesomeIcon icon={faVideo} /> <b>Step 2: Launch the Camera</b><br />
-  &#10036; Click on the <b>“Click to Capture!”</b> button or use the <b>Camera</b> button from the header or footer.<br />
-  &#10036; This will take you to the <b>Camera Page</b>, where your webcam will activate automatically (after asking for permissions).<br />
-  &#10036; Make sure to <b>allow camera access</b> when prompted by your browser.<br /><br />
+            <FontAwesomeIcon icon={faVideo} /> <b>Step 2: Launch the Camera</b><br />
+            &#10036; Click on the <b>“Click to Capture!”</b> button or use the <b>Camera</b> button from the header or footer.<br />
+            &#10036; This will take you to the <b>Camera Page</b>, where your webcam will activate automatically (after asking for permissions).<br />
+            &#10036; Make sure to <b>allow camera access</b> when prompted by your browser.<br /><br />
 
-  <FontAwesomeIcon icon={faCameraRetro} /> <b>Step 3: Capture a Frame</b><br />
-  &#10036; Once your webcam feed is live, click the <b>“Capture”</b> button.<br />
-  &#10036; The current video frame will be captured and displayed on the screen.<br />
-  &#10036; This image can be used for <b>analysis</b> and <b>recognition</b>.<br /><br />
+            <FontAwesomeIcon icon={faCameraRetro} /> <b>Step 3: Capture a Frame</b><br />
+            &#10036; Once your webcam feed is live, click the <b>“Capture”</b> button.<br />
+            &#10036; The current video frame will be captured and displayed on the screen.<br />
+            &#10036; This image can be used for <b>analysis</b> and <b>recognition</b>.<br /><br />
 
-  <FontAwesomeIcon icon={faBrain} /> <b>What Happens Behind the Scenes?</b><br />
-  &#10036; FaceSense processes the captured image to detect and recognize human faces.<br/>
-  &#10036; It draws <b>green bounding boxes</b> and <b>identifies the face</b> around detected faces for visual clarity.<br />
-  &#10036; Future updates will include features like <b>presence tracking, duration, and report generation</b>.<br /><br />
+            <FontAwesomeIcon icon={faBrain} /> <b>What Happens Behind the Scenes?</b><br />
+            &#10036; FaceSense processes the captured image to detect and recognize human faces.<br />
+            &#10036; It draws <b>green bounding boxes</b> and <b>identifies the face</b> around detected faces for visual clarity.<br />
+            &#10036; Future updates will include features like <b>presence tracking, duration, and report generation</b>.<br /><br />
 
-  <FontAwesomeIcon icon={faSyncAlt} /> <b>Navigation Tips</b><br />
-  &#10036; Use the <b>Home, Camera, About,</b> and <b>Instructions</b> buttons from the header or footer to navigate the app.<br />
-  &#10036; Smooth scrolling will guide you to the selected sections seamlessly.<br /><br />
-</p>
+            <FontAwesomeIcon icon={faSyncAlt} /> <b>Navigation Tips</b><br />
+            &#10036; Use the <b>Home, Camera, About,</b> and <b>Instructions</b> buttons from the header or footer to navigate the app.<br />
+            &#10036; Smooth scrolling will guide you to the selected sections seamlessly.<br /><br />
+          </p>
 
         </div>
         <div className="CaptureHome" id="CaptureHome">
-  
-</div>
-        
+
+        </div>
+
       </div>
 
       {/* Footer Section */}
       <Footer
-  scrollToTop={scrollToTop}
-  scrollToCamera={scrollToCamera}
-  scrollToAbout={scrollToAbout}
-  scrollToInstruct={scrollToInstruct}
-/>
+        scrollToTop={scrollToTop}
+        scrollToCamera={scrollToCamera}
+        scrollToAbout={scrollToAbout}
+        scrollToInstruct={scrollToInstruct}
+      />
     </div>
   );
 }

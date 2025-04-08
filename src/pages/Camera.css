@@ -1,7 +1,4 @@
-/* General Page Styles */
-
-body,
-html {
+body {
     margin: 0;
     padding: 0;
     background-color: rgb(203, 157, 244);
@@ -37,6 +34,7 @@ html {
 #title-cam {
     font-size: 2.5rem;
     font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
 }
 
 
@@ -74,16 +72,17 @@ html {
 #video-container {
     display: flex;
     flex-direction: row;
-    gap: 10rem;
+    gap: 9rem;
 }
 
 
 /* Video Feed */
 
 .video-feed {
-    margin-left: 8rem;
-    width: 424.5px;
-    height: 320px;
+    margin-left: 4rem;
+    margin-top: 1%;
+    width: 500px;
+    height: 340px;
     border-radius: 10px;
     border: 3px solid black;
     background-color: #f0f0f0;
@@ -93,8 +92,9 @@ html {
 /* Captured Image */
 
 #capturedImage {
-    width: 424.5px;
-    height: 320px;
+    margin-top: 1%;
+    width: 500px;
+    height: 340px;
     border-radius: 10px;
     border: 3px solid black;
     display: none;
@@ -113,9 +113,9 @@ html {
     color: white;
     border: none;
     cursor: pointer;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    margin-left: 36rem;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 48.5%;
     border-radius: 10px;
 }
 
@@ -164,4 +164,25 @@ html {
 #btns-foot-cam button:hover {
     background-color: #3e8e41;
     transform: scale(1.1);
+}
+
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+    #video-container {
+        flex-direction: column;
+        padding: 100px 10px 30px;
+        gap: 1rem;
+    }
+    #captureBtn {
+        margin-top: 20px;
+    }
+    #title-cam {
+        font-size: 1.5rem;
+    }
+    #btns-cam button {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
 }
