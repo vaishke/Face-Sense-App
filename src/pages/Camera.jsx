@@ -4,6 +4,9 @@ import "./Camera.css";
 import logo from "../assets/logo.jpg";
 import Header from "./Header.jsx"; 
 import Footer from "./Footer.jsx";
+import axios from "axios";
+
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Camera = () => {
   const videoRef = useRef(null);
@@ -32,7 +35,7 @@ const Camera = () => {
     };
   }, []);
 
-  const captureImage = () => {
+  const captureImage = async () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
     if (video && canvas) {
@@ -40,9 +43,41 @@ const Camera = () => {
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      canvas.style.display = "block"; // Show canvas after capturing
+      canvas.style.display = "block";
+  
+      // Convert canvas to blob
+      canvas.toBlob(async (blob) => {
+        if (!blob) return;
+  
+        const formData = new FormData();
+        formData.append("image", blob, "capture.jpg");
+  
+        try {
+          const response = await axios.post(`${apiUrl}/recognize`, formData);
+          const faces = response.data.faces;
+  
+          faces.forEach(face => {
+            const { x, y, width, height } = face.box;
+            const name = face.name;
+  
+            // Draw rectangle
+            context.strokeStyle = "lime";
+            context.lineWidth = 2;
+            context.strokeRect(x, y, width, height);
+  
+            // Draw label
+            context.fillStyle = "yellow";
+            context.font = "16px Arial";
+            context.fillText(name, x, y - 10);
+          });
+        } catch (error) {
+          console.error("Recognition failed:", error);
+          alert("Recognition failed");
+        }
+      }, "image/jpeg");
     }
   };
+  
 
   return (
     <div className="body">
