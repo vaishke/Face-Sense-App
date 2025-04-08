@@ -1,9 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./FaceSense.css";
+import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
 import logo from "../assets/logo.jpg";
 import bgVideo from "../assets/bgvideo1.mp4";
 import Captureani from "../assets/Captureani1.gif";
+import instructimage from "../assets/aboutimage1.jpg"
 import image1 from "../assets/image1.png";
 import image2 from "../assets/image2.webp";
 import image3 from "../assets/image3.avif";
@@ -28,6 +31,9 @@ function FaceSense() {
   const scrollToAbout = () => {
     document.getElementById("about-container").scrollIntoView({ behavior: "smooth" });
   };
+  const scrollToInstruct = () => {
+    document.getElementById("instruct-container").scrollIntoView({ behavior: "smooth" });
+  };
   const scrollToCamera = () => {
     document.getElementById("CaptureHome").scrollIntoView({ behavior: "smooth" });
   };
@@ -38,15 +44,12 @@ function FaceSense() {
   return (
     <div>
       {/* Header Section */}
-      <header className="heading">
-        <img src={logo} alt="Logo" id="logo" />
-        <div id="title">FaceSense</div>
-        <div id="btns">
-          <button onClick={scrollToTop}>Home</button>
-          <button onClick={scrollToCamera}>Camera</button>
-          <button onClick={scrollToAbout}>About</button>
-        </div>
-      </header>
+      <Header
+  scrollToTop={scrollToTop}
+  scrollToCamera={scrollToCamera}
+  scrollToAbout={scrollToAbout}
+  scrollToInstruct={scrollToInstruct}
+/>
 
       {/* Background Video */}
       <video autoPlay muted loop id="bg-video">
@@ -84,16 +87,29 @@ function FaceSense() {
 </div>
         
       </div>
+      {/* Instruction Section */}
+      <div className="instruct-container" id="instruct-container">
+        <div className="CaptureHomeImg">
+    <img className="CaptureHomeGif" src={instructimage} alt="instructimage" />
+  </div>
+        <div className="about-text" id="about-text">
+          <p>
+            <b>FaceSense is an AI-powered facial recognition application that captures video footage and detects human faces in real time. Using advanced image processing techniques, it identifies individuals, tracks their movements, and analyzes their presence within a designated area. Once a face is detected, the application highlights it with a green bounding box for clear visibility, ensuring accurate and efficient recognition. This web-based application seamlessly integrates with live video streams from sources such as IP cameras and local video files. It offers key functionalities like facial recognition, object tracking, and real-time monitoring, allowing users to track entry and exit events and generate reports on individual presence and duration. Designed for security monitoring and accessibility solutions, FaceSense features an intuitive user interface with real-time annotations and ensures data privacy by complying with relevant regulations. Its fast and precise detection capabilities enhance security, automation, and surveillance across various environments.</b>
+          </p>
+        </div>
+        <div className="CaptureHome" id="CaptureHome">
+  
+</div>
+        
+      </div>
 
       {/* Footer Section */}
-      <footer className="foot">
-        <div id="btns-foot">
-          <button onClick={scrollToTop}>Home</button>
-          <button onClick={goToCamera}>Camera</button>
-          <button onClick={scrollToAbout}>About</button>
-        </div>
-        <h4>Copyright &copy; 2025 FaceSense. All rights reserved</h4>
-      </footer>
+      <Footer
+  scrollToTop={scrollToTop}
+  scrollToCamera={scrollToCamera}
+  scrollToAbout={scrollToAbout}
+  scrollToInstruct={scrollToInstruct}
+/>
     </div>
   );
 }

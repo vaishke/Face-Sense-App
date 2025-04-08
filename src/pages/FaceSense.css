@@ -139,7 +139,7 @@ body {
 
 /* About Section */
 
-.about-container {
+.about-container, .instruct-container {
     display: flex;
     gap: 30px;
     padding: 30px;

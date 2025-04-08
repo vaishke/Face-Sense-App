@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Camera.css";
 import logo from "../assets/logo.jpg";
+import Header from "./Header.jsx"; 
+import Footer from "./Footer.jsx";
 
 const Camera = () => {
   const videoRef = useRef(null);
@@ -44,37 +46,18 @@ const Camera = () => {
 
   return (
     <div className="body">
-      {/* Header */}
-      <div className="heading-cam">
-        <img src={logo} alt="Logo" id="logo-cam" />
-        <div id="title-cam">FaceSense</div>
-        <div id="btns-cam">
-          <button onClick={() => navigate("/")}>Home</button> {/* Navigates to FaceSense.jsx */}
-          <button onClick={() => navigate("/camera")}>Camera</button>
-          <button onClick={() => navigate("/", { state: { scrollToAbout: true } })}>About</button>
- {/* Scrolls to About Section */}
-        </div>
-      </div>
+      <Header />
   
-      {/* Camera Section */}
       <div>
         <button id="captureBtn" onClick={captureImage}>Capture</button>
       </div>
-
+  
       <div id="video-container">
         <video ref={videoRef} autoPlay playsInline className="video-feed"></video>
         <canvas ref={canvasRef} id="capturedImage"></canvas>
       </div>
-
-      {/* Footer */}
-      <footer className="foot-cam">
-        <div id="btns-foot-cam">
-          <button onClick={() => navigate("/")}>Home</button>
-          <button onClick={() => navigate("/camera")}>Camera</button>
-          <button onClick={() => navigate("/#about-image")}>About</button>
-        </div>
-        <h4>Copyright &copy; 2025 FaceSense. All rights reserved</h4>
-      </footer>
+  
+      <Footer />
     </div>
   );
 };
