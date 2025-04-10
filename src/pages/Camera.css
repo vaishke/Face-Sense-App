@@ -73,6 +73,9 @@ body {
     display: flex;
     flex-direction: row;
     gap: 9rem;
+    width: 500px;
+    height: 340px;
+    margin-left: 10%;
 }
 
 
@@ -113,9 +116,9 @@ body {
     color: white;
     border: none;
     cursor: pointer;
-    margin-top: 1%;
+    margin-top: 2%;
     margin-bottom: 1%;
-    margin-left: 48.5%;
+    margin-left: 117%;
     border-radius: 10px;
 }
 

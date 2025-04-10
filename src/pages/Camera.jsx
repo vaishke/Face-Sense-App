@@ -62,13 +62,15 @@ const Camera = () => {
   
             // Draw rectangle
             context.strokeStyle = "lime";
-            context.lineWidth = 2;
-            context.strokeRect(x, y, width, height);
+            context.lineWidth = 5;
+            const topLeftX = x - width / 2;
+            const topLeftY = y - height / 2;
+            context.strokeRect(topLeftX, topLeftY, width, height);
   
             // Draw label
             context.fillStyle = "yellow";
             context.font = "16px Arial";
-            context.fillText(name, x, y - 10);
+            context.fillText(name, topLeftX, topLeftY - 10);
           });
         } catch (error) {
           console.error("Recognition failed:", error);
