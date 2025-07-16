@@ -23,5 +23,7 @@
 | Video Input     | OpenCV         |
 | Language        | Python         |
 | Data Storage    | Pickle (embeddings), Folder-based images |
+| Frontend        | ReactJS        |
+| APIs            | Flask          |
 
 ---
