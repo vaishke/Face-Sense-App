@@ -13,12 +13,10 @@ def get_face_embedding(face_img):
     # Resize to 160x160
     face_img = cv2.resize(face_img, (160, 160))
     
-    # Save the image temporarily
     with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as temp_file:
         cv2.imwrite(temp_file.name, face_img)
         temp_path = temp_file.name
 
-    # Get embedding using DeepFace.represent with image path
     face_embedding = DeepFace.represent(
         img_path=temp_path,
         model_name="Facenet",
@@ -58,6 +56,4 @@ def recognize_face(face_img, embeddings):
     print(f"\nFinal decision based on average: {matched_person} ({best_avg_similarity:.4f})")
     print(f"Final decision based on max: {best_person_max} ({best_max_similarity:.4f})")
 
-    # Choose either based on avg or max — up to you:
     return matched_person, best_avg_similarity
-    # Or return best_person_max, best_max_similarity
