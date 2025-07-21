@@ -13,7 +13,6 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app, origins="http://localhost:3000")
 
-# Load embeddings just once here
 with open("embeddings.pkl", "rb") as f:
     embeddings = pickle.load(f)
 
@@ -26,7 +25,7 @@ def recognize():
     image_np = np.frombuffer(image_file.read(), np.uint8)
     frame = cv2.imdecode(image_np, cv2.IMREAD_COLOR)
 
-    boxes = detect_faces(frame)  # list of dicts with x, y, width, height
+    boxes = detect_faces(frame)  
 
     recognized_faces = []
     h_frame, w_frame = frame.shape[:2]
